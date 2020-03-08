@@ -36,6 +36,10 @@ export class ProductListComponent implements OnInit{
         this.pageTitle = 'Product List: ' + message;
     }
 
+    onAddToCartClicked(productId:number) : void{
+        location.href="/products/" + productId;
+    }
+
     performFilter(filterBy:string): IProduct[]{
         filterBy = filterBy.toLocaleLowerCase();
         return this.products.filter((product:IProduct)=>

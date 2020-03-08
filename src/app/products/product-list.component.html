@@ -21,7 +21,7 @@
                 <thead>
                     <tr>
                         <th>
-                            <button class='btn btn-primary' 
+                            <button class='btn btn-primary' id='btnToggleImage'
                             (click)='toggleImage()'>
                             {{showImage ? 'Hide' : 'Show' }} Image
                         </button>
@@ -31,10 +31,11 @@
                         <th>Available</th>
                         <th>Price</th>
                         <th>5 Star Rating</th>
+                        <th>Buy</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor='let product of filteredProducts'>
+                    <tr *ngFor='let product of filteredProducts' class="productRow">
                         <td>
                             <img *ngIf='showImage'
                             [src]='product.imageUrl'
@@ -42,7 +43,7 @@
                             [style.width.px]='imageWidth'
                             [style.margin.px]='imageMargin'>
                         </td>
-                        <td>
+                        <td  class='productName'>
                             <a [routerLink]="['/products',product.productId]">
                             {{product.productName}}
                             </a>
@@ -51,8 +52,11 @@
                         <td>{{product.releaseDate }}</td>
                         <td>{{product.price | currency:'INR':'symbol':'1.2-2' }}</td>
                         <!-- <td>{{product.starRating}}</td> -->
-                        <pm-star [rating]='product.starRating'
-                                  (ratingClicked) = 'onRatingClicked($event)'  ></pm-star>
+                       <td> <pm-star [rating]='product.starRating'
+                                  (ratingClicked) = 'onRatingClicked($event)'  ></pm-star></td>
+                                  <td>
+                                  <button class="btn btn-primary" (click)='onAddToCartClicked(product.productId)'>Add To Cart</button>
+                                  </td>
                     </tr> 
                 </tbody>
             </table>
