@@ -8,7 +8,9 @@ import {catchError , tap, map} from 'rxjs/operators';
     providedIn:'root'
 })
 export class ProductService{
-private productUrl='api/products/products.json';
+//private productUrl='api/products/products.json';
+//private productUrl='https://localhost:44389/Product';
+private productUrl = 'https://hkbangularapi.azurewebsites.net/Product';
 constructor(private http:HttpClient){}
 
     getProducts() : Observable<IProduct[]> {
