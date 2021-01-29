@@ -20,3 +20,14 @@ steps:
     npm install
     ng build --prod
   displayName: 'npm install and build'
+  workingDirectory: src/angular8
+
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: angular8PipelineArtifactProd
+    targetPath: 'src/angular8/dist'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'src/angular8/dist'
+    ArtifactName: angular8BuildArtifactProd
